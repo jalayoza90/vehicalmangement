@@ -10,6 +10,7 @@ import { ForgotComponent } from './user/forgot/forgot.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UserService } from './services/user/user.service';
+import { DashboardService } from './services/dashboard/dashboard.service';
 import { DashboardComponent } from "app/dashboard/dashboard/dashboard.component";
 
 const appRouters: Routes = [
@@ -35,7 +36,7 @@ const appRouters: Routes = [
     HttpModule,
     RouterModule.forRoot(appRouters)
   ],
-  providers: [UserService],
+  providers: [UserService, DashboardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

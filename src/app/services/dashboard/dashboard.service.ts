@@ -6,7 +6,10 @@ export class DashboardService {
   domain = 'http://111.93.82.91:3000/';
   headers;
   constructor(private http: Http) { 
-    this.headers = new Headers({'Content-Type': 'application/json'});
+    var loc = JSON.parse(localStorage.getItem('logedin'));
+    
+    this.headers = new Headers({'Content-Type': 'application/json', 'Authorization': loc.token});
+    
   }
   listall(callback) {
     this.http.get(this.domain+'vehicle/list-all', {headers: this.headers}).subscribe((responce) => {

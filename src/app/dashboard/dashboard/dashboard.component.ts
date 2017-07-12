@@ -6,11 +6,13 @@ import { DashboardService } from '../../services/dashboard/dashboard.service';
   styleUrls: ['./dashboard.component.css']
 })
 export class DashboardComponent implements OnInit {
-  listall
+  listall;
   constructor(public dashboard: DashboardService) { }
 
   ngOnInit() {
     this.dashboard.listall(function(list){
+      console.log(list);
+      
       this.listall = list;
     });
   }
