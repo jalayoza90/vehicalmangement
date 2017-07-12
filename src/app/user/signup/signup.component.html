@@ -1,0 +1,24 @@
+<div *ngIf="data && data.status != 200">{{data.error}}</div>
+<form (ngSubmit)= "submit(formdata)" #f="ngForm" >
+  First Name : <input type="text" name="firstname" id="firstname" required [(ngModel)]="formdata.firstname"><br />
+  Last Name : <input type="lastname" name="lastname" id="lastname" required [(ngModel)]="formdata.lastname"><br />
+  Email : <input type="email" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" name="email" id="email" required [(ngModel)]="formdata.email"><br />
+  Password : <input type="password" name="password" id="password" required [(ngModel)]="formdata.password"><br />
+  Confirm Password : <input type="confirmpassword" name="confirmpassword" validateEqual="password" id="confirmpassword" required [(ngModel)]="formdata.confirmpassword"><br />
+  Birthdate : <input type="birthdate" name="birthdate" id="birthdate" [(ngModel)]="formdata.birthdate"><br />
+  Flat Purchase Date : <input type="perchase" name="perchase" id="perchase" [(ngModel)]="formdata.perchase"><br />
+  Profile Pic : <input type="file" name="pic" id="pic" [(ngModel)]="formdata.pic"><br />
+  <input type="checkbox" name="agree" id="agree" [(ngModel)]="formdata.agree"> Agree to terms and condition <br />
+  Flat block : 
+  <select name="block" id="block" [(ngModel)]="formdata.block">
+    <option value="A" selected>A</option>
+    <option value="B">B</option>
+    <option value="C">C</option>
+    <option value="D">D</option>
+    <option value="E">E</option>
+    <option value="E">F</option>
+  </select>
+  <br />
+  Mobile Number : <input type="number" name="mobile" id="mobile" maxlength="12" [(ngModel)]="formdata.mobile"><br />
+  <button type="submit" name="submit" id="submit" [disabled]="!f.valid">Sign Up</button>
+</form>

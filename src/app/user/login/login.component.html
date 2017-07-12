@@ -1,0 +1,9 @@
+<button [routerLink] ="['/signup']" >Signup</button>
+<button [routerLink] ="['/forgot']" >Forgot Password</button>
+
+<div *ngIf="data && data.status != 200">{{data.error}}</div>
+<form (ngSubmit)= "submit(formdata)" #f="ngForm" >
+  Email : <input type="text" name="email" id="email" required [(ngModel)]="formdata.email">
+  Password : <input type="password" name="password" id="password" required [(ngModel)]="formdata.password">
+  <button type="submit" name="submit" id="submit" [disabled]="!f.valid">Login</button>
+</form>
