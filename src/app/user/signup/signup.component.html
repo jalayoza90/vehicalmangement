@@ -1,4 +1,5 @@
-<div *ngIf="data && data.status != 200">{{data.error}}</div>
+<button [routerLink] ="['/login']" >Login</button>
+<div *ngIf="data && status != 200">{{error}}</div>
 <form (ngSubmit)= "submit(formdata)" #f="ngForm" >
   First Name : <input type="text" name="firstname" id="firstname" required [(ngModel)]="formdata.firstname"><br />
   Last Name : <input type="lastname" name="lastname" id="lastname" required [(ngModel)]="formdata.lastname"><br />

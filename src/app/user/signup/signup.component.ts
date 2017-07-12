@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {Router} from "@angular/router";
 import { NgForm } from '@angular/forms';
+import { UserService } from '../../services/user/user.service';
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
@@ -20,17 +22,34 @@ export class SignupComponent implements OnInit {
     mobile: 0
 };
 res;
-  constructor() { }
+error;
+status;
+  constructor(public userservice: UserService, public router: Router) { }
 
   ngOnInit() {
+    var local = localStorage.getItem('logedin');
+    if(local) {
+      this.router.navigate(['dashboard']);
+    }
   }
 
   submit(val) {
     console.log(val);
     if(val.password != val.confirmpassword) {
-      this.res.error = 'Password Not match';
-      this.res.status = 400;
+      this.error = 'Password Not match';
+      this.status = 400;
+      return false;
     }
+
+    var self = this;
+    this.userservice.signup(val, function(res){
+      console.log(res);
+      self.res = res;
+      if(res.status == 200) {
+        self.router.navigate(['login']);
+      }
+
+    });
   }
 
 }

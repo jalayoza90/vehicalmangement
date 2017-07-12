@@ -10,14 +10,25 @@ export class UserService {
   }
 
   public login(logindata, callback) {
-    console.log(logindata);
-    
-    var postparam = {
-      email: logindata.email,
-      password: logindata.password
-    }
-
+ 
     this.http.post(this.domain+'auth/login',logindata, {headers: this.headers}).subscribe((responce) => {
+      
+      
+      var resObject = responce.json();
+      resObject.status = 200;
+      localStorage.setItem('logedin',JSON.stringify(resObject));
+      callback(resObject);
+    }, (err) => {
+      var jsonParse = JSON.parse(err._body);
+      jsonParse.status = 400;
+      callback(jsonParse);
+    });
+  }
+
+  signup(regdata, callback) {
+    console.log(regdata);
+    
+    this.http.post(this.domain+'auth/login',regdata, {headers: this.headers}).subscribe((responce) => {
       
       
       var resObject = responce.json();

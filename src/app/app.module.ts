@@ -10,13 +10,15 @@ import { ForgotComponent } from './user/forgot/forgot.component';
 import { Routes, RouterModule } from '@angular/router';
 
 import { UserService } from './services/user/user.service';
+import { DashboardComponent } from "app/dashboard/dashboard/dashboard.component";
 
 const appRouters: Routes = [
   { path : '', component: LoginComponent },
   
   { path : 'login', component: LoginComponent },
   { path : 'signup', component: SignupComponent },
-  { path : 'forgot', component: ForgotComponent }
+  { path : 'forgot', component: ForgotComponent },
+  { path : 'dashboard', component: DashboardComponent }
 ]
 
 @NgModule({
@@ -24,7 +26,8 @@ const appRouters: Routes = [
     AppComponent,
     LoginComponent,
     SignupComponent,
-    ForgotComponent
+    ForgotComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
